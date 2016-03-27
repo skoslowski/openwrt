@@ -1,0 +1,11 @@
+#!/bin/sh
+if [ "$BUTTON" = "BTN_2" ] && [ "$ACTION" = "pressed" ]; then
+    if [ $(wifi status | grep -c up...true) -gt 0 ]; then
+        logger "WiFi button used: WiFi down"
+        /sbin/wifi down
+    else
+        logger "WiFi button used: WiFi up"
+        /sbin/wifi up
+    fi
+fi
+
